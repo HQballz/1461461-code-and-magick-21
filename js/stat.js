@@ -2,7 +2,6 @@ var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var TEXT_X = 100
 var TEXT_Y = 10;
-var GAP_SHADOW = 10;
 var GAP_TEXT = 20;
 
 var textTitle = ['Ура вы победили!', 'Список результатов: '];
