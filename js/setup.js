@@ -41,7 +41,9 @@ const WIZARD_EYES_COLORS = [
   'green'
 ]
 
-var setup = document.querySelector('.setup')
+const setup = document.querySelector('.setup')
+const similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item')
+
 setup.classList.remove('hidden')
 
 const getRandomItem = function (arr) {
@@ -51,7 +53,7 @@ const getRandomItem = function (arr) {
 
 var similarWizards = []
 
-const wizardRender = function (names, surnames, coatColors, eyesColors, quantity) {
+const wizardRandom = function (names, surnames, coatColors, eyesColors, quantity) {
   for (let i = 0; i < quantity; i++) {
     var wizards = {
       name: `${getRandomItem(names)}` + ` ${getRandomItem(surnames)}`,
@@ -62,5 +64,15 @@ const wizardRender = function (names, surnames, coatColors, eyesColors, quantity
   }
 }
 
-wizardRender(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COAT_COLORS, WIZARD_EYES_COLORS, WIZARD_QUANTITY)
+wizardRandom(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COAT_COLORS, WIZARD_EYES_COLORS, WIZARD_QUANTITY)
 console.log(similarWizards)
+
+var wizardRender = function (wizard) {
+  var wizardElement = similarWizardTemplate.cloneNode(true)
+
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor
+
+  return wizardElement
+}
