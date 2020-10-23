@@ -43,8 +43,10 @@ const WIZARD_EYES_COLORS = [
 
 const setup = document.querySelector('.setup')
 const similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item')
+const similarListElement = document.querySelector('.setup-similar-list')
 
 setup.classList.remove('hidden')
+document.querySelector('.setup-similar').classList.remove('hidden')
 
 const getRandomItem = function (arr) {
   var randomItem = arr[Math.floor(Math.random() * arr.length)]
@@ -76,3 +78,10 @@ var wizardRender = function (wizard) {
 
   return wizardElement
 }
+
+var fragment = document.createDocumentFragment()
+for (var i = 0; i < similarWizards.length; i++) {
+  fragment.appendChild(wizardRender(similarWizards[i]))
+}
+
+similarListElement.appendChild(fragment)
