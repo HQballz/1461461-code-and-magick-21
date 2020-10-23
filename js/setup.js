@@ -1,5 +1,7 @@
 'use strict'
 
+const WIZARD_QUANTITY = 4
+
 const WIZARD_NAMES = [
   'Иван',
   'Хуан Себастьян',
@@ -40,5 +42,25 @@ const WIZARD_EYES_COLORS = [
 ]
 
 var setup = document.querySelector('.setup')
-
 setup.classList.remove('hidden')
+
+const getRandomItem = function (arr) {
+  var randomItem = arr[Math.floor(Math.random() * arr.length)]
+  return randomItem
+}
+
+var similarWizards = []
+
+const wizardRender = function (names, surnames, coatColors, eyesColors, quantity) {
+  for (let i = 0; i < quantity; i++) {
+    var wizards = {
+      name: `${getRandomItem(names)}` + ` ${getRandomItem(surnames)}`,
+      coatColor: getRandomItem(coatColors),
+      eyesColor: getRandomItem(eyesColors)
+    }
+    similarWizards.push(wizards)
+  }
+}
+
+wizardRender(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COAT_COLORS, WIZARD_EYES_COLORS, WIZARD_QUANTITY)
+console.log(similarWizards)
